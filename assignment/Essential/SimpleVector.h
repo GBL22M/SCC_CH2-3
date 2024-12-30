@@ -1,6 +1,11 @@
 #pragma once
+#define _CRTDBG_MAP_ALLOC
 
 #include <iostream>
+
+#ifdef _DEBUG
+	#define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#endif
 
 template <typename T>
 class SimpleVector
@@ -34,9 +39,6 @@ public:
 		std::cout << "\n";
 	}
 
-protected:
-	void Resize();
-
 private:
 	T* mData;
 	int mCurrentSize;
@@ -66,6 +68,8 @@ SimpleVector<T>::~SimpleVector()
 	mCurrentSize = 0;
 
 	delete[] mData;
+
+	_CrtDumpMemoryLeaks();
 }
 
 template<typename T>
@@ -90,10 +94,4 @@ void SimpleVector<T>::PopBack()
 	}
 
 	mCurrentSize--;
-}
-
-template<typename T>
-void SimpleVector<T>::Resize()
-{
-
 }
