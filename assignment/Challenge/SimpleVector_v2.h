@@ -5,7 +5,7 @@
 #include <iostream>
 
 #ifdef _DEBUG
-	#define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
 #endif
 
 template <typename T>
@@ -77,8 +77,7 @@ BetterSimpleVector<T>::~BetterSimpleVector()
 	mCurrentSize = 0;
 	
 	delete[] mData;	
-
-	_CrtDumpMemoryLeaks();
+	mData = nullptr;
 }
 
 template<typename T>
@@ -147,9 +146,8 @@ void BetterSimpleVector<T>::Resize(int newCapacity)
 	}
 
 	delete[] mData;	
+	mData = nullptr;
 
 	mData = newData;	
 	mCurrentCapacity = newCapacity;	
-
-	_CrtDumpMemoryLeaks();
 }

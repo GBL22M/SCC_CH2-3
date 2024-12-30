@@ -3,6 +3,10 @@
 
 int main()
 {	
+#ifdef _DEBUG
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif	
+
 	BetterSimpleVector<int> vector2;
 	BetterSimpleVector<int> vector(3);
 
@@ -10,8 +14,8 @@ int main()
 	vector.PushBack(40);
 	vector.PushBack(30);
 	vector.PushBack(50);
-	vector.PushBack(20);
 
+	vector.PushBack(20);
 	std::cout << "vector: ";
 	vector.Print();
 	
