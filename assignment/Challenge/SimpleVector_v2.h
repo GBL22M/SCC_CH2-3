@@ -58,10 +58,9 @@ BetterSimpleVector<T>::BetterSimpleVector(int capacity)
 
 template<typename T>
 BetterSimpleVector<T>::BetterSimpleVector(const BetterSimpleVector& other)
+	:mCurrentCapacity(other.mCurrentCapacity)
+	,mCurrentSize(other.mCurrentSize)
 {	
-	mCurrentCapacity = other.mCurrentCapacity;
-	mCurrentSize = other.mCurrentSize;
-
 	mData = new T[mCurrentCapacity];
 
 	for (int i = 0; i < mCurrentSize; ++i)

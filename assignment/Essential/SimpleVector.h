@@ -11,8 +11,7 @@ template <typename T>
 class SimpleVector
 {
 public:
-	SimpleVector();
-	SimpleVector(int capacity);
+	SimpleVector(int capacity = 10);
 	~SimpleVector();
 
 	void PushBack(const T& value);
@@ -46,14 +45,6 @@ private:
 };
 
 template <typename T>
-SimpleVector<T>::SimpleVector()
-	:mcurrentCapacity(10)
-	, mCurrentSize(0)
-{
-	mData = new T[10];
-}
-
-template <typename T>
 SimpleVector<T>::SimpleVector(int capacity)
 	:mcurrentCapacity(capacity)
 	, mCurrentSize(0)
@@ -67,9 +58,7 @@ SimpleVector<T>::~SimpleVector()
 	mcurrentCapacity = 0;
 	mCurrentSize = 0;
 
-	delete[] mData;
-
-	_CrtDumpMemoryLeaks();
+	delete[] mData;	
 }
 
 template<typename T>

@@ -2,8 +2,10 @@
 
 int main()
 {
-	SimpleVector<int> vector(5);	
-
+#ifdef _DEBUG
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif	
+	SimpleVector<int> vector;
 	vector.PushBack(10);
 	vector.PushBack(20);
 	vector.PushBack(30);
@@ -34,6 +36,22 @@ int main()
 	vector.PushBack(300);
 
 	vector.Print(); //100 200 300
+
+	//-----------------------------
+
+	SimpleVector<int> vector2(3);
+	vector2.PushBack(1);
+	vector2.PushBack(2);
+	vector2.PushBack(3);
+	vector2.PushBack(4);
+
+	vector2.Print();
+
+	vector2.PopBack();
+	vector2.PopBack();
+	vector2.PopBack();
+	vector2.PopBack();
+	vector2.Print();
 
 	return 0;
 }
